@@ -84,3 +84,27 @@ Test your sensors with a DMM. Ensure they are functional. What would good refere
 Consider how you'll setup the ADC10 subsystem. What are the registers you'll need to use? Which bits in those registers are important? What's the initialization sequence you'll need?
 Consider the hardware interface. Which ADC10 channels will you use? Which pins correspond to those channels?
 Consider the interface you'll create to your sensors. Will you block or use interrupts? Will you convert one sensor at a time or multiple?
+
+
+Design
+---------
+
+Sensors have been tested and are functional (must connect ground, +5V, LED, and sensor to PA on the board).
+Good reference values are values that will detect a wall within a couple of inches. It should not detect the maze wall
+when it is far away from the wall because that would cause confusion. Also, it should detect the wall a couple inches away,
+otherwise the robot will be too close to the wall. The values that I used were 0x2FF.
+
+ADC10 - 
+I am going to use A4(P1.4) and A5(P1.5) for the LED in this lab. During the maze, I will also add A3.
+I need to connect to LED1 and LED2(from the chip to the board). Then, I need to connect A4 and A5 to their
+respective sensors. 
+The ADC detects walls and outputs to the LEDs by selecting an input channel in the code and a bit
+that goes along with the channel. Also, the ADC must be turned on and the inturrupt enabled.
+SMCLK should be used because it is the slowest clock.
+Set P1DIR to output for the LEDs.
+Begin sampling and conversion.
+Last, check to see if the input value is greater than or less than the threshhold and set the LEDs accordingly.
+
+For both sensors to work simultaneously, the program must continually switch between input channels and bits. 
+In order to do this, the ENC must be set to low. Then,  change the LED that is being turned on or off 
+based on the input channel selected.
