@@ -95,7 +95,7 @@ when it is far away from the wall because that would cause confusion. Also, it s
 otherwise the robot will be too close to the wall. The values that I used were 0x2FF.
 
 ADC10 - 
-I am going to use A4 and A5 for the LED in this lab. During the maze, I will also add A3.
+I am going to use A4(P1.4) and A5(P1.5) for the LED in this lab. During the maze, I will also add A3.
 I need to connect to LED1 and LED2(from the chip to the board). Then, I need to connect A4 and A5 to their
 respective sensors. 
 The ADC detects walls and outputs to the LEDs by selecting an input channel in the code and a bit
