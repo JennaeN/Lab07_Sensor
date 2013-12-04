@@ -10,4 +10,13 @@
 
 int movingAverage(int sampleStream[]);
 
+void senseLeft();
+
+void senseRight();
+
+void senseCenter();
+
+void IsLeftHighLow(int threshhold);
+
+void IsRightHighLow(int threshhold);
 #endif /* SENSOR_H_ */
